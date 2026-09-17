@@ -39,3 +39,19 @@ Verified 2026-08-05, on Claude Code 2.1.222, against the live listing:
 - `claude plugin details mattpocock-skills` then reports version 1.2.0 and loads the promoted skills.
 - The listing's `source` is `{"source": "url", "url": "https://github.com/mattpocock/skills.git", "sha": …}`: the **sha is pinned**, so a release reaches installed users when that pin moves, not the moment we tag. At the time of writing the pin sits two commits behind `main`, which is why it lists 22 skills rather than the 24 in `plugin.json`.
 - The in-session `/plugin install mattpocock-skills` was **not** exercised: `/plugin` is unavailable in headless (`claude -p`) sessions. It runs the same resolver as the CLI, and the documented example form is `/plugin install <name>@claude-plugins-official`.
+
+## Update, 2026-09-17
+
+Oh My Pi can install this repo as a git plugin:
+
+```bash
+omp plugin install github:witooh/matt-skills
+```
+
+`omp plugin install github:owner/repo` goes through bun, then `omp-plugins` discovery, which only loads `skills/<name>/SKILL.md` (one level, no bucket folders). Nested `skills/engineering/<name>` would install as a package and still expose zero skills.
+
+Unlike Codex, bun's `github:` extract keeps git symlink objects. Measured on omp 18.2.4 / bun 1.3.14: `bun install github:witooh/matt-skills` left `AGENTS.md -> CLAUDE.md` as a symlink, and `git archive` of a directory alias emits `skills/tdd -> engineering/tdd` as mode 120000. Each promoted skill therefore has a committed relative symlink `skills/<name> -> <bucket>/<name>`, generated from `.claude-plugin/plugin.json` by `scripts/sync-omp-skill-aliases.mjs`. Root `package.json` carries an `omp` field so runtime discovery does not skip the package.
+
+A `bun add /local/path` copy does drop those directory aliases, so local install is `omp plugin link`, not `bun add`. Codex is still deferred: it still drops symlinks on copy, so the same aliases would arrive empty there.
+
+Verified 2026-09-17, on omp 18.2.4: `scanSkillsFromDir` treats directory symlinks as skill roots (`entry.isSymbolicLink()`), and `getEnabledPlugins` requires `package.json.omp` (or `.pi`). Isolated `omp plugin link` then `omp read skill://tdd` resolved all 25 promoted skills and rejected `retro` (in-progress, not promoted).

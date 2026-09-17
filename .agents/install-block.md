@@ -22,6 +22,18 @@ It's in Claude Code's official marketplace, so there's nothing to add first, and
 
 </canonical-block>
 
+## Oh My Pi: the plugin (this fork)
+
+<canonical-block name="oh-my-pi">
+
+```bash
+omp plugin install github:witooh/matt-skills
+```
+
+</canonical-block>
+
+Oh My Pi installs this fork as a git plugin. Re-run the same command to update. Overlay rules live in [.agents/omp-plugin.md](./omp-plugin.md).
+
 ## Codex, and other agents: skills.sh
 
 The plugin is Claude Code only. Everywhere else, [skills.sh](https://skills.sh/mattpocock/skills) copies editable skill files into the project. Use the whole-set form on `README.md`:

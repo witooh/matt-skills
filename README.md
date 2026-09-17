@@ -46,6 +46,15 @@ It's in Claude Code's official marketplace, so there's nothing to add first, and
 </details>
 
 <details>
+<summary><strong>Oh My Pi</strong></summary>
+
+```bash
+omp plugin install github:witooh/matt-skills
+```
+
+</details>
+
+<details>
 <summary><strong>Codex, and other agents</strong></summary>
 
 ```bash
