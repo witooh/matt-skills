@@ -46,6 +46,18 @@ It's in Claude Code's official marketplace, so there's nothing to add first, and
 </details>
 
 <details>
+<summary><strong>Grok</strong></summary>
+
+```bash
+grok plugin install witooh/matt-skills --trust
+grok plugin enable mattpocock-skills
+```
+
+Grok installs this fork as a git plugin. Re-run `grok plugin update mattpocock-skills` to update. `grok plugin install mattpocock-skills` resolves to the official marketplace entry for `mattpocock/skills`. Use the commands above for this fork.
+
+</details>
+
+<details>
 <summary><strong>Oh My Pi</strong></summary>
 
 ```bash

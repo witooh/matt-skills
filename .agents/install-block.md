@@ -22,6 +22,19 @@ It's in Claude Code's official marketplace, so there's nothing to add first, and
 
 </canonical-block>
 
+## Grok: the plugin (this fork)
+
+<canonical-block name="grok">
+
+```bash
+grok plugin install witooh/matt-skills --trust
+grok plugin enable mattpocock-skills
+```
+
+</canonical-block>
+
+Grok installs this fork as a git plugin. Re-run `grok plugin update mattpocock-skills` to update. `grok plugin install mattpocock-skills` resolves to the official marketplace entry for `mattpocock/skills`. Use the commands above for this fork. Overlay rules live in [.agents/grok-plugin.md](./grok-plugin.md).
+
 ## Oh My Pi: the plugin (this fork)
 
 <canonical-block name="oh-my-pi">
@@ -36,7 +49,7 @@ Oh My Pi installs this fork as a git plugin. Re-run the same command to update. 
 
 ## Codex, and other agents: skills.sh
 
-The plugin is Claude Code only. Everywhere else, [skills.sh](https://skills.sh/mattpocock/skills) copies editable skill files into the project. Use the whole-set form on `README.md`:
+Codex still has no native plugin. For Codex and any harness without a plugin block above, [skills.sh](https://skills.sh/mattpocock/skills) copies editable skill files into the project. Use the whole-set form on `README.md`:
 
 <canonical-block name="skills-sh-whole-set">
 
@@ -66,8 +79,10 @@ npx skills@latest update <name>
 
 ## The two routes are exclusive
 
-The plugin is a managed, read-only bundle you subscribe to. skills.sh writes files you own and edit. Installing both leaves the user with every skill twice: always say "pick one".
+The plugin is a managed, read-only bundle you subscribe to. The Grok plugin and the Oh My Pi plugin are that same bundle. skills.sh writes files you own and edit. Installing a plugin route and skills.sh leaves the user with every skill twice: always say "pick one".
 
 ## Not the install story
 
 `.claude-plugin/marketplace.json` makes the repo its own single-plugin marketplace (`/plugin marketplace add mattpocock/skills`, then `/plugin install mattpocock-skills@mattpocock`). The official listing supersedes it. It is kept as a fallback for installing the repo directly (an unreleased commit, or a fork), and is **not** documented to users.
+
+`.grok-plugin/marketplace.json` is the documented Grok catalog for this fork. Its plugin source is a git URL. Grok drops a marketplace path of `.` or `./` (`marketplace path is empty`).

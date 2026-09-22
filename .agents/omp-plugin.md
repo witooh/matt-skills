@@ -23,7 +23,8 @@ Do not invert to `buckets/` plus a flat `skills/`. Upstream will keep adding `sk
 ## After `git merge upstream/main`
 
 1. `npm run sync-omp-skill-aliases` if plugin.json gained or lost a promoted skill.
-2. `npm run check-plugin-version`
-3. Resolve leftover conflicts only in files this fork owns: `package.json` (`omp` + scripts), README / install-block omp sections, this file.
+2. `npm run sync-grok-plugin` if `.claude-plugin/plugin.json` changed.
+3. `npm run check-plugin-version`
+4. Resolve leftover conflicts only in files this fork owns: `package.json` (`omp` + scripts), README / install-block sections, `.grok-plugin/`, `.agents/grok-plugin.md`, this file.
 
 `CLAUDE.md` stays identical to upstream on purpose.
