@@ -71,3 +71,13 @@ Grok accepts a `skills` array of directory paths (Claude's shape), so the bucket
 - A marketplace entry whose source is `.` or `./` is dropped with `marketplace path is empty`. `.grok-plugin/marketplace.json` points at `https://github.com/witooh/matt-skills.git`.
 
 The bare name `mattpocock-skills` is already the Claude official marketplace entry, and Grok reads that marketplace. Its source is `https://github.com/mattpocock/skills.git` (pinned sha). Install this fork by repository (`witooh/matt-skills`). The bare name installs the official listing. Codex stays deferred. Install wording lives in [.agents/install-block.md](../install-block.md). Overlay rules live in [.agents/grok-plugin.md](../grok-plugin.md).
+
+## Update, 2026-09-23
+
+Cursor can add this fork from GitHub:
+
+```text
+/add-plugin https://github.com/witooh/matt-skills
+```
+
+That flow reads `.cursor-plugin/marketplace.json`, then `.cursor-plugin/plugin.json` at `source: "./"`. The `skills` field is `./skills/engineering` and `./skills/productivity`. Cursor scans each path for child directories that contain `SKILL.md`. It does not scan `skills/` itself, so `misc/`, `in-progress/`, `deprecated/`, and the one-level omp symlinks stay out. Install wording lives in [.agents/install-block.md](../install-block.md). Rules live in [.agents/cursor.md](../cursor.md).

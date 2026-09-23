@@ -47,6 +47,20 @@ omp plugin install github:witooh/matt-skills
 
 Oh My Pi installs this fork as a git plugin. Re-run the same command to update. Overlay rules live in [.agents/omp-plugin.md](./omp-plugin.md).
 
+## Cursor: the plugin (this fork)
+
+<canonical-block name="cursor">
+
+```text
+/add-plugin https://github.com/witooh/matt-skills
+```
+
+Adds this fork from GitHub. Cursor loads the promoted skills. Refresh the marketplace to pick up later changes.
+
+</canonical-block>
+
+Rules live in [.agents/cursor.md](./cursor.md).
+
 ## Codex, and other agents: skills.sh
 
 Codex still has no native plugin. For Codex and any harness without a plugin block above, [skills.sh](https://skills.sh/mattpocock/skills) copies editable skill files into the project. Use the whole-set form on `README.md`:
@@ -77,9 +91,9 @@ npx skills@latest update <name>
 
 `skills@latest` is the pinned spelling in all three. The pages under `docs/` used to carry their own copy of these commands; those blocks are now deleted rather than corrected, because the site renders the install commands itself.
 
-## The two routes are exclusive
+## The routes are exclusive
 
-The plugin is a managed, read-only bundle you subscribe to. The Grok plugin and the Oh My Pi plugin are that same bundle. skills.sh writes files you own and edit. Installing a plugin route and skills.sh leaves the user with every skill twice: always say "pick one".
+The Claude Code plugin is a managed, read-only bundle you subscribe to. The Grok plugin, the Oh My Pi plugin, and the Cursor plugin are that same bundle. skills.sh writes files you own and edit. Installing more than one of these leaves every skill twice: always say "pick one".
 
 ## Not the install story
 

@@ -67,6 +67,17 @@ omp plugin install github:witooh/matt-skills
 </details>
 
 <details>
+<summary><strong>Cursor</strong></summary>
+
+```text
+/add-plugin https://github.com/witooh/matt-skills
+```
+
+Adds this fork from GitHub. Cursor loads the promoted skills. Refresh the marketplace to pick up later changes.
+
+</details>
+
+<details>
 <summary><strong>Codex, and other agents</strong></summary>
 
 ```bash

@@ -1,0 +1,16 @@
+{
+  "name": "mattpocock-skills",
+  "owner": {
+    "name": "Witoo Harianto"
+  },
+  "metadata": {
+    "description": "This fork of Matt Pocock's skills, installable as a Cursor plugin. Promoted skills only."
+  },
+  "plugins": [
+    {
+      "name": "mattpocock-skills",
+      "source": "./",
+      "description": "Matt Pocock's agent skills for real engineering (grilling, spec/ticket flows, TDD, code review, domain modelling and more)."
+    }
+  ]
+}

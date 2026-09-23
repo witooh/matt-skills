@@ -14,7 +14,7 @@
   "scripts": {
     "changeset": "changeset",
     "version": "changeset version && node scripts/sync-plugin-version.mjs && node scripts/sync-grok-plugin.mjs",
-    "check-plugin-version": "node scripts/sync-plugin-version.mjs --check && node scripts/sync-omp-skill-aliases.mjs --check && node scripts/sync-grok-plugin.mjs --check",
+    "check-plugin-version": "node scripts/sync-plugin-version.mjs --check && node scripts/sync-omp-skill-aliases.mjs --check && node scripts/sync-grok-plugin.mjs --check && node scripts/check-cursor-plugin.mjs",
     "sync-omp-skill-aliases": "node scripts/sync-omp-skill-aliases.mjs",
     "sync-grok-plugin": "node scripts/sync-grok-plugin.mjs"
   },
