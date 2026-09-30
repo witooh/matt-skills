@@ -81,3 +81,14 @@ Cursor can add this fork from GitHub:
 ```
 
 That flow reads `.cursor-plugin/marketplace.json`, then `.cursor-plugin/plugin.json` at `source: "./"`. The `skills` field is `./skills/engineering` and `./skills/productivity`. Cursor scans each path for child directories that contain `SKILL.md`. It does not scan `skills/` itself, so `misc/`, `in-progress/`, `deprecated/`, and the one-level omp symlinks stay out. Install wording lives in [.agents/install-block.md](../install-block.md). Rules live in [.agents/cursor.md](../cursor.md).
+
+## Update, 2026-09-30
+
+Kiro has no plugin manifest this repo ships. Install from a checkout:
+
+```bash
+./kiro.sh
+./kiro.sh --project
+```
+
+`./kiro.sh` copies each promoted skill directory (`skills/engineering/<name>` and `skills/productivity/<name>`) into `~/.kiro/skills/<name>`. `./kiro.sh --project` writes `./.kiro/skills/<name>` instead. It copies the real directories, not the one-level `skills/<name>` omp symlinks: those aliases would dangle outside this repo. `misc/`, `in-progress/`, and `deprecated/` stay out. It does not create `.kiro/agents` or hooks. Re-running deletes and recopies only the promoted skill directories, so files removed upstream are pruned, and other Kiro content stays. Workspace skills win over global skills of the same name (`~/.kiro/skills/` vs `.kiro/skills/`, [Kiro skills](https://kiro.dev/docs/skills/)). Install wording lives in [.agents/install-block.md](../install-block.md).

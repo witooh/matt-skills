@@ -61,6 +61,19 @@ Adds this fork from GitHub. Cursor loads the promoted skills. Refresh the market
 
 Rules live in [.agents/cursor.md](./cursor.md).
 
+## Kiro: the install script (this fork)
+
+<canonical-block name="kiro">
+
+```bash
+./kiro.sh
+./kiro.sh --project
+```
+
+Run from a checkout of this fork. `./kiro.sh` copies the promoted skills into `~/.kiro/skills`. `./kiro.sh --project` installs into `./.kiro` instead. Re-running overwrites only those skill directories. Other Kiro content is left intact.
+
+</canonical-block>
+
 ## Codex, and other agents: skills.sh
 
 Codex still has no native plugin. For Codex and any harness without a plugin block above, [skills.sh](https://skills.sh/mattpocock/skills) copies editable skill files into the project. Use the whole-set form on `README.md`:
@@ -93,7 +106,7 @@ npx skills@latest update <name>
 
 ## The routes are exclusive
 
-The Claude Code plugin is a managed, read-only bundle you subscribe to. The Grok plugin, the Oh My Pi plugin, and the Cursor plugin are that same bundle. skills.sh writes files you own and edit. Installing more than one of these leaves every skill twice: always say "pick one".
+The Claude Code plugin is a managed, read-only bundle you subscribe to. The Grok plugin, the Oh My Pi plugin, and the Cursor plugin are that same bundle. skills.sh writes files you own and edit. The Kiro script copies the promoted skills into `.kiro/skills`. Installing more than one of these leaves every skill twice: always say "pick one".
 
 ## Not the install story
 
