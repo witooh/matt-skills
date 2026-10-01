@@ -24,7 +24,7 @@ If you want to keep up with changes to these skills, and any new ones I create, 
 
 ## Installation (30-second setup)
 
-Two ways in, two philosophies. **The [Claude Code plugin](https://code.claude.com/docs/en/plugins)** installs the whole set as a managed, read-only bundle that updates when I ship, so you subscribe rather than fork. **[skills.sh](https://skills.sh/mattpocock/skills)** copies editable skill files into your project, so you can hack on them and make them your own. Pick one: installing both leaves you with every skill twice.
+Plugins install the promoted set as a managed bundle. Native plugins are available for Claude Code, Grok, Oh My Pi, Cursor, and Codex. **[skills.sh](https://skills.sh/mattpocock/skills)** copies editable skill files into your project, so you can hack on them and make them your own. Pick one install route per agent: installing both leaves you with every skill twice.
 
 ### 1. Get the skills
 
@@ -90,15 +90,27 @@ Run from a checkout of this fork. `./kiro.sh` copies the promoted skills into `~
 </details>
 
 <details>
-<summary><strong>Codex, and other agents</strong></summary>
+<summary><strong>Codex</strong></summary>
+
+```bash
+codex plugin marketplace add witooh/matt-skills
+codex plugin add mattpocock-skills@witooh-matt-skills
+```
+
+Installs this fork's promoted skills as a Codex plugin. Start a new Codex session after installing. To update, run `codex plugin marketplace upgrade witooh-matt-skills`, then re-run the plugin add command.
+
+From a checkout, use `codex plugin marketplace add .` for the first command.
+
+</details>
+
+<details>
+<summary><strong>Other agents</strong></summary>
 
 ```bash
 npx skills@latest add mattpocock/skills
 ```
 
 Pick the skills you want, and which coding agents to install them on. **The installer lets you choose which skills to take, so make sure `setup-matt-pocock-skills` is one of them.**
-
-A native Codex plugin is on the roadmap (see [`.agents/adr/0002-ship-as-a-claude-code-plugin.md`](./.agents/adr/0002-ship-as-a-claude-code-plugin.md)).
 
 </details>
 

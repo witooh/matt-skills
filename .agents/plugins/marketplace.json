@@ -1,0 +1,20 @@
+{
+  "name": "witooh-matt-skills",
+  "interface": {
+    "displayName": "Matt Skills (Witooh fork)"
+  },
+  "plugins": [
+    {
+      "name": "mattpocock-skills",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

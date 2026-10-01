@@ -74,9 +74,24 @@ Run from a checkout of this fork. `./kiro.sh` copies the promoted skills into `~
 
 </canonical-block>
 
-## Codex, and other agents: skills.sh
+## Codex: the plugin (this fork)
 
-Codex still has no native plugin. For Codex and any harness without a plugin block above, [skills.sh](https://skills.sh/mattpocock/skills) copies editable skill files into the project. Use the whole-set form on `README.md`:
+<canonical-block name="codex">
+
+```bash
+codex plugin marketplace add witooh/matt-skills
+codex plugin add mattpocock-skills@witooh-matt-skills
+```
+
+Installs this fork's promoted skills as a Codex plugin. Start a new Codex session after installing. To update, run `codex plugin marketplace upgrade witooh-matt-skills`, then re-run the plugin add command.
+
+</canonical-block>
+
+From a checkout, use `codex plugin marketplace add .` for the first command. The catalog lives at `.agents/plugins/marketplace.json`. Rules live in [.agents/codex-plugin.md](./codex-plugin.md).
+
+## Other agents and editable installs: skills.sh
+
+For any harness without a plugin block above, or to keep editable copies on any agent, [skills.sh](https://skills.sh/mattpocock/skills) copies skill files into the project. Use the whole-set form on `README.md`:
 
 <canonical-block name="skills-sh-whole-set">
 
@@ -106,7 +121,7 @@ npx skills@latest update <name>
 
 ## The routes are exclusive
 
-The Claude Code plugin is a managed, read-only bundle you subscribe to. The Grok plugin, the Oh My Pi plugin, and the Cursor plugin are that same bundle. skills.sh writes files you own and edit. The Kiro script copies the promoted skills into `.kiro/skills`. Installing more than one of these leaves every skill twice: always say "pick one".
+The Claude Code plugin is a managed, read-only bundle you subscribe to. The Grok plugin, the Oh My Pi plugin, the Cursor plugin, and the Codex plugin are that same bundle. skills.sh writes files you own and edit. The Kiro script copies the promoted skills into `.kiro/skills`. Installing more than one of these leaves every skill twice: always say "pick one".
 
 ## Not the install story
 

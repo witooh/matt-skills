@@ -1,5 +1,7 @@
 # Ship the skill set as a native Claude Code plugin; defer a native Codex plugin
 
+The original Codex deferral below is superseded by the 2026-10-01 update. This fork now ships native plugins for Claude Code, Oh My Pi, Grok, Cursor, and Codex.
+
 These skills have always been installable via [skills.sh](https://skills.sh/mattpocock/skills) (`npx skills add mattpocock/skills`), which copies editable skill files into a user's project across Claude Code, Codex, and other Agent-Skills-standard harnesses. A recurring request is a **plug-and-play** distribution: subscribe to the set as a read-only, always-current bundle you don't edit, rather than a fork you own. That is exactly what native plugin systems provide.
 
 We ship a native **Claude Code plugin** and, for now, **defer** a native **Codex plugin**. The split is forced by how each ecosystem's plugin manifest selects skills, against this repo's bucketed layout.
@@ -92,3 +94,18 @@ Kiro has no plugin manifest this repo ships. Install from a checkout:
 ```
 
 `./kiro.sh` copies each promoted skill directory (`skills/engineering/<name>` and `skills/productivity/<name>`) into `~/.kiro/skills/<name>`. `./kiro.sh --project` writes `./.kiro/skills/<name>` instead. It copies the real directories, not the one-level `skills/<name>` omp symlinks: those aliases would dangle outside this repo. `misc/`, `in-progress/`, and `deprecated/` stay out. It does not create `.kiro/agents` or hooks. Re-running deletes and recopies only the promoted skill directories, so files removed upstream are pruned, and other Kiro content stays. Workspace skills win over global skills of the same name (`~/.kiro/skills/` vs `.kiro/skills/`, [Kiro skills](https://kiro.dev/docs/skills/)). Install wording lives in [.agents/install-block.md](../install-block.md).
+
+## Update, 2026-10-01
+
+Ship a native Codex plugin for this fork. [OpenAI's manifest reference](https://developers.openai.com/plugins/deploy/submission) now accepts `skills` as an array of paths, removing the original single-path constraint. Codex CLI 0.159.3 reads the explicit promoted paths directly from `.codex-plugin/plugin.json` and resolves all 25 skills through app-server `plugin/read`.
+
+The Codex manifest is generated from `.claude-plugin/plugin.json` by `scripts/sync-codex-plugin.mjs`. It adds Codex listing metadata, points the repository field at this fork, and tracks `package.json`'s version. Skills stay in their real bucket directories, with no duplicate copies or symlink dependency.
+
+`.agents/plugins/marketplace.json` is the native catalog. It uses the marketplace name `witooh-matt-skills` and points at the plugin at `./`, relative to the repo root. Install this fork with:
+
+```bash
+codex plugin marketplace add witooh/matt-skills
+codex plugin add mattpocock-skills@witooh-matt-skills
+```
+
+Use `codex plugin marketplace add .` from a checkout for local development. Install wording lives in [.agents/install-block.md](../install-block.md); maintenance and verification live in [.agents/codex-plugin.md](../codex-plugin.md). `npm run version` regenerates the manifest, and `npm run check-plugin-version` checks the Codex catalog and promoted set alongside the other plugins.
