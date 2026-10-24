@@ -45,4 +45,11 @@ Checked on Codex CLI 0.159.3:
 - App-server `plugin/read` resolves exactly the 25 promoted skill names and their original bucket paths. Non-promoted skills are absent.
 - `npm run check-plugin-version` passes, including the Codex manifest and catalog check. `claude plugin validate . --strict` still passes.
 
+Rechecked on 2026-10-22 after syncing upstream 1.3.1, using Codex CLI 0.163.0:
+
+- `plugin list` with a temporary, empty `CODEX_HOME` and the local marketplace override resolves version 1.3.1 with `AVAILABLE` installation and `ON_USE` authentication policy.
+- `npm run check-plugin-version` passes for all 27 promoted skills.
+- `bash kiro-test.sh` passes. A separate temporary Kiro project install includes the graduated `implement-spec`, `pr`, and `retro` skills and excludes retired and non-promoted skills.
+- `claude plugin validate . --strict` fails on Claude Code 2.1.308 because the validator warns about root `CLAUDE.md` and the one-level symlink aliases. The aliases remain required for Oh My Pi discovery.
+
 These checks use the working checkout. The GitHub install route picks up these files after they are pushed; it is a repo marketplace rather than a public directory listing.

@@ -37,8 +37,8 @@ fi
 if [ ! -f "$project_dir/.kiro/skills/tdd/agents/openai.yaml" ]; then
   fail "project install dropped a nested skill file"
 fi
-if [ -e "$project_dir/.kiro/skills/retro" ]; then
-  fail "project install copied in-progress retro"
+if [ -e "$project_dir/.kiro/skills/claude-handoff" ]; then
+  fail "project install copied in-progress claude-handoff"
 fi
 if [ -e "$project_dir/.kiro/skills/setup-pre-commit" ]; then
   fail "project install copied misc setup-pre-commit"
@@ -73,8 +73,8 @@ HOME="$global_home" "$SCRIPT_DIR/kiro.sh" --global >/dev/null
 if [ ! -f "$global_home/.kiro/skills/tdd/SKILL.md" ]; then
   fail "global install omitted tdd"
 fi
-if [ -e "$global_home/.kiro/skills/retro" ]; then
-  fail "global install copied in-progress retro"
+if [ -e "$global_home/.kiro/skills/claude-handoff" ]; then
+  fail "global install copied in-progress claude-handoff"
 fi
 if [ -e "$global_home/.kiro/agents" ]; then
   fail "global install created agents/"
